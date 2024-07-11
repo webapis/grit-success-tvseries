@@ -14,14 +14,16 @@ export default function SeriesList({ page, tur }) {
         const exists =f.GENRES.flat(1).map(m=> deaccent(m).trim().toLowerCase()).includes(tur)
  
       return exists })
+      
     const paginatedData = paginate(dataTur, page, 50)
     const pageCount = Math.ceil(dataTur.length / 50)
-
+    const shuffledData =shuffleArray(paginatedData)
     return (
         <Container>
             <TopNavigation currentSlug={tur}/>
+            <div>Toplam {dataTur.length} dizi bulundu</div>
             <Grid container spacing={2}>
-                {paginatedData.sort((a, b) => b.FIRST_YEAR - a.FIRST_YEAR).map((m, i) => {
+                {shuffledData.sort((a, b) => b.FIRST_YEAR - a.FIRST_YEAR).map((m, i) => {
                     console.log('i', i)
                     const { TVSERIES_TITLE, POSTER, GENRES, FIRST_YEAR, LAST_YEAR, SUMMARY, WATCH_LINK, KANAL, YAPIM_SIRKETI, YAYIN_TARIHI } = m
                     const imageSrc = POSTER.sort((a, b) => b.POSTER_QUALITY - a.POSTER_QUALITY)[0].POSTER_IMG
@@ -48,3 +50,12 @@ function paginate(array, page, pageSize) {
 
     return array.slice(startIndex, endIndex);
 }
+
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+  }

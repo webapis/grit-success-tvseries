@@ -17,7 +17,7 @@ export default function MediaControlCard({ src, title, genre, years, summary, DE
       acc.push(value.trim());
     }
     return acc;
-  }, []).sort():[]
+  }, []).filter(f=>f).sort():[]
 
 debugger
   return (
@@ -35,11 +35,7 @@ debugger
             {YAYIN_TARIHI[0]&& <div><span style={{ fontWeight: "bold" }}>Yayın Tarihi: </span>{YAYIN_TARIHI[0]}</div>  }
           
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div">
-            {!years.includes('undefined') && years &&   <div>  <span style={{ fontWeight: "bold" }}>Tarih: </span>{ years}</div> }
-          
-           
-          </Typography>
+   
           <Typography variant="subtitle1" color="text.secondary" component="div">
             <span style={{ fontWeight: "bold" }}>Tür:</span>{GENRES.length > 0 && GENRES.map(m => <Chip sx={{margin:1}}  size='small' color='secondary' variant={(currentSlug === deaccent(m).trim().toLowerCase()) ? 'filled':'outlined' }   label={m}/> )  }
           </Typography>
@@ -57,13 +53,11 @@ debugger
           <Typography variant="subtitle1" color="text.secondary" component="div">
             <span style={{ fontWeight: "bold" }}>İzle:</span> {WATCH_LINK.length > 0 && WATCH_LINK.map((m, i) => {
 
-              return <><a key={i} href={m}>{extractDomain(m)}</a> <br></br></>
+              return <> | <a key={i} href={m}>{extractDomain(m)}</a></>
 
             })}
           </Typography>
-          <p>
-            {DETAIL_LINK.map((m) => <div>{extractDomain(m)}</div>)}
-          </p>
+      
         </CardContent>
 
       </Box>

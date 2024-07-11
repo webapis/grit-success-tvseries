@@ -32,23 +32,27 @@ debugger
             {title}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            <span style={{ fontWeight: "bold" }}>Yayın Tarihi:</span>{YAYIN_TARIHI[0]}
+            {YAYIN_TARIHI[0]&& <div><span style={{ fontWeight: "bold" }}>Yayın Tarihi: </span>{YAYIN_TARIHI[0]}</div>  }
+          
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            <span style={{ fontWeight: "bold" }}>Tarih:</span>{!years.includes('undefined') && years}
+            {!years.includes('undefined') && years &&   <div>  <span style={{ fontWeight: "bold" }}>Tarih: </span>{ years}</div> }
+          
+           
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
             <span style={{ fontWeight: "bold" }}>Tür:</span>{GENRES.length > 0 && GENRES.map(m => <Chip sx={{margin:1}}  size='small' color='secondary' variant={(currentSlug === deaccent(m).trim().toLowerCase()) ? 'filled':'outlined' }   label={m}/> )  }
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            <span style={{ fontWeight: "bold" }}>Yapım Şirket:</span> {YAPIM_SIRKETI.length > 0 && YAPIM_SIRKETI[0]}
+            {YAPIM_SIRKETI.length > 0 && <div> <span style={{ fontWeight: "bold" }}>Yapım Şirket: </span> {YAPIM_SIRKETI[0]} </div> }
           </Typography>
 
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            <span style={{ fontWeight: "bold" }}>Kanal:</span> {KANAL && KANAL[0]}
+            {KANAL.length>0 &&   <div><span style={{ fontWeight: "bold" }}>Kanal: </span> {KANAL[0] }</div>}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            {summary.length > 0 && summary[0]}
+           {summary.length > 0 &&  <div><span style={{ fontWeight: "bold" }} >Konu:</span> {summary[0].substring(0,400)}....</div>}
+       
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
             <span style={{ fontWeight: "bold" }}>İzle:</span> {WATCH_LINK.length > 0 && WATCH_LINK.map((m, i) => {

@@ -12,6 +12,6 @@ export default function TopNavigation({ currentSlug }) {
                 const slug = typeof m === 'object' ? m.slug : m
                 return <Chip color="primary" key={i} component="a" sx={{ textTransform: 'capitalize', cursor: 'pointer' }} variant={ currentSlug=== slug ? 'filled' : 'outlined'} href = {`/media/${slug}/turk-dizileri/sayfa/1`} label={label} />
         })
-    }
+        }
     </Stack>
 }

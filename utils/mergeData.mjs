@@ -1,22 +1,29 @@
+
+import { createRequire } from "module";
 import fs from 'fs'
-import atv from '../unzipped-data/atv.json'  with { type: "json" }
+const require = createRequire(import.meta.url);
+
+
+const  atv = require(`${process.cwd()}/unzipped-data/atv.json`)
 // import kanal7 from '../unzipped-data/kanal7.json'  with { type: "json" }
-import kanald from '../unzipped-data/kanald.json'  with { type: "json" }
-import nowtv from '../unzipped-data/nowtv.json'  with { type: "json" }
-import showtv from '../unzipped-data/showtv.json'  with { type: "json" }
-import sinemalar from '../unzipped-data/sinemalar.json'  with { type: "json" }
-import puhutv from '../unzipped-data/puhutv.json'  with { type: "json" }
-import beyazperde from '../unzipped-data/beyazperde.json'  with { type: "json" }
-import startv from '../unzipped-data/startv.json'  with { type: "json" }
+const  kanald = require( `${process.cwd()}/unzipped-data/kanald.json`)
+const nowtv =require( `${process.cwd()}/unzipped-data/nowtv.json`)
+const showtv =require (`${process.cwd()}/unzipped-data/showtv.json`)
+const puhutv =require (`${process.cwd()}/unzipped-data/puhutv.json`)
+const beyazperde =require (`${process.cwd()}/unzipped-data/beyazperde.json`)
+const sinemalar =require (`${process.cwd()}/unzipped-data/sinemalar.json`)
+const startv =require (`${process.cwd()}/unzipped-data/startv.json`)
+const medyapim =require (`${process.cwd()}/unzipped-data/medyapim.json`)
+const wikidl =require (`${process.cwd()}/unzipped-data/wikidl.json`)
+const abcProductionWiki =require (`${process.cwd()}/unzipped-data/abcProductionWiki.json`)
+const tableProductionWiki =require (`${process.cwd()}/unzipped-data/tableProductionWiki.json`)
+const ngmedia =require (`${process.cwd()}/unzipped-data/ngmedia.json`)
+const tims =require (`${process.cwd()}/unzipped-data/tims.json`)
+
 // import trt1 from '../unzipped-data/trt1.json'  with { type: "json" }
-import medyapim from '../unzipped-data/medyapim.json'  with { type: "json" }
-import wikidl from '../unzipped-data/wikidl.json'  with { type: "json" }
-import abcProductionWiki from '../unzipped-data/abcProductionWiki.json'  with { type: "json" }
-import tableProductionWiki from '../unzipped-data/tableProductionWiki.json'  with { type: "json" }
-import ngmedia from '../unzipped-data/tims.json'  with { type: "json" }
-import tims from '../unzipped-data/ngmedia.json'  with { type: "json" }
-import deaccent from './deaccent.mjs'
-import groupBy from './groupBy.mjs'
+
+// import deaccent from './deaccent.mjs'
+// import groupBy from './groupBy.mjs'
 import fields from './consts.mjs'
 const initData = [...atv,
 ...wikidl,

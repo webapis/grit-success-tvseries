@@ -1,6 +1,7 @@
 
 import { createRequire } from "module";
 import fs from 'fs'
+import makeDir from "make-dir";
 const require = createRequire(import.meta.url);
 
 
@@ -44,7 +45,7 @@ const notFound = []
 debugger
 const aggregatedData = []
 
-
+await makeDir('data/aggregated-data')
 
 for (let current of initData) {
 

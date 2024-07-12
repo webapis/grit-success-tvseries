@@ -7,7 +7,7 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const tvseries = require('../data/aggregated-data/tvseries.json')
 
-const EXTERNAL_DATA_URL = 'https://turk-dizi.glumzi.com/turk-dizi';
+const EXTERNAL_DATA_URL = 'https://turk-dizi.glumzi.com/';
 const genres = [{ slug: "tum", label: 'tüm' }, "komedi", "aile", { slug: "cocuk", label: 'çocuk' }, "dram", "romantik", "tarih", { slug: "ask", label: 'aşk' }, "gerilim", "fantastik", "gizem", "bilim kurgu", "aksiyon", "polisiye", { slug: "suc", label: 'suç' }, " macera", "mafya", "korku", { slug: "genclik", label: 'gençlik' }]
 
 const validData = tvseries.filter(f => f.WATCH_LINK.length > 0)

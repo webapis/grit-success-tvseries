@@ -9,7 +9,8 @@
     "lint": "next lint",
     "downloadData": "node utils/downloadData.mjs",
     "fetchData": "node utils/fetchData.mjs",
-    "mergeData": "node utils/mergeData.mjs"
+    "mergeData": "node utils/mergeData.mjs",
+    "generateSitemap":"node utils/generateSiteMap.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

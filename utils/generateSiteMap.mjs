@@ -22,7 +22,7 @@ const genreNavs = genres.map(m => {
     return exists
   }).length
   return { ...m, count, slug, label }
-})
+}).filter(f => f.count > 0)
 
 const canidatePages = genreNavs.map((m) => {
 

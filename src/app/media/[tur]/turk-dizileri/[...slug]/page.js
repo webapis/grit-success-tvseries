@@ -16,9 +16,8 @@ export default function MediaPage(props) {
     const { params: { slug, tur } } = props
     const page = parseInt(slug[slug.length - 1])
 
-    return <SeriesList page={page} tur={tur} />
+    return <SeriesList page={page} tur={decodeURI(tur)} />
 }
-
 
 
 
@@ -30,7 +29,7 @@ export async function generateStaticParams() {
 
 
     for (let current of genreNavs) {
-     const {slug}=current
+        const { slug } = current
 
         const dataTur = slug === 'tum' ? validData : validData.filter(f => {
 
@@ -41,11 +40,11 @@ export async function generateStaticParams() {
 
         //const paginatedData = paginate(dataTur, page, 50)
         const pageCount = Math.ceil(dataTur.length / 50)
-    
+
         const pages = Array.from({ length: pageCount }, (_, i) => i + 1);
-   
+
         for (let page of pages) {
-            cansitatePages.push({ page, tur:slug })
+            cansitatePages.push({ page, tur: slug })
         }
     }
 

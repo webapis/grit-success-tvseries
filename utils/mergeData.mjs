@@ -47,12 +47,12 @@ debugger
 const aggregatedData = []
 
 await makeDir('data/aggregated-data')
-
+const exceptions =[ ['Ali̇ye', 'Atiye']]
 for (let current of initData) {
 
   const TVSERIES_TITLE = current.TVSERIES_TITLE
 
-   let currentAggData = aggregatedData.find((f) =>f.TVSERIES_TITLE===TVSERIES_TITLE || areStringsSimilar(normalizeTurkish(f.TVSERIES_TITLE).normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(),normalizeTurkish(TVSERIES_TITLE).normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim()))
+   let currentAggData = aggregatedData.find((f) =>f.TVSERIES_TITLE===TVSERIES_TITLE || areStringsSimilar(normalizeTurkish(f.TVSERIES_TITLE).normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(),normalizeTurkish(TVSERIES_TITLE).normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(),exceptions) )
   
   if (currentAggData) {
 
@@ -117,11 +117,18 @@ function levenshteinDistance(a, b) {
   return matrix[b.length][a.length];
 }
 
-function areStringsSimilar(str1, str2, maxDistance = 1) {
+function areStringsSimilar(str1, str2, maxDistance = 1, exceptions = []) {
+  // Check if the pair of strings is in the exceptions list
+  if (exceptions.some(pair => 
+    (pair[0].toLowerCase() === str1.toLowerCase() && pair[1].toLowerCase() === str2.toLowerCase()) ||
+    (pair[1].toLowerCase() === str1.toLowerCase() && pair[0].toLowerCase() === str2.toLowerCase())
+  )) {
+    return false;
+  }
+  
   const distance = levenshteinDistance(str1, str2);
   return distance <= maxDistance;
 }
-
 
 function normalizeTurkish(text) {
   return text

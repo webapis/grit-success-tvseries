@@ -21,7 +21,6 @@ export default function SeriesList({ page, tur }) {
       
     const paginatedData = paginate(dataTur, page, 50)
     const pageCount = Math.ceil(dataTur.length / 50)
-    const genres = [{ slug: "tum", label: 'tüm' }, "komedi", "aile", { slug: "cocuk", label: 'çocuk' }, "dram", "romantik", "tarih", { slug: "ask", label: 'aşk' }, "gerilim", "fantastik", "gizem", "bilim kurgu", "aksiyon", "polisiye", { slug: "suc", label: 'suç' }, " macera", "mafya", "korku", { slug: "genclik", label: 'gençlik' }]
 
     return (
         <Container>

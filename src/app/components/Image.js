@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-export default function MediaControlCard({ src, title, genre, years, summary, DETAIL_LINK, KANAL, WATCH_LINK, YAPIM_SIRKETI, YAYIN_TARIHI, POSTER, currentSlug }) {
+export default function MediaControlCard({ src, title, genre, summary, KANAL, WATCH_LINK, YAPIM_SIRKETI, YAYIN_TARIHI, POSTER, currentSlug }) {
 
 
   const GENRES =genre? genre.flat().map(m => m.toLowerCase()).reduce((acc, value) => {
@@ -37,7 +37,10 @@ debugger
           </Typography>
    
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            <span style={{ fontWeight: "bold" }}>Tür:</span>{GENRES.length > 0 && GENRES.map(m => <Chip sx={{margin:1}}  size='small' color='secondary' variant={(currentSlug === deaccent(m).trim().toLowerCase()) ? 'filled':'outlined' }   label={m}/> )  }
+           
+              {GENRES.length > 0 && <div><span style={{ fontWeight: "bold" }}>Tür:</span>{ GENRES.map(m => <Chip sx={{margin:1}}  size='small' color='secondary' variant={(currentSlug === deaccent(m).trim().toLowerCase()) ? 'filled':'outlined' }   label={m}/> )  }</div>}
+         
+            
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
             {YAPIM_SIRKETI.length > 0 && <div> <span style={{ fontWeight: "bold" }}>Yapım Şirket: </span> {YAPIM_SIRKETI[0]} </div> }

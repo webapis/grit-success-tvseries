@@ -36,7 +36,7 @@ function generateSiteMap(canidatePages) {
      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
        <!--We manually set the two URLs we know already-->
        <url>
-         <loc>https://turk-dizi.glumzi.com/turk-dizi</loc>
+         <loc>https://turk-dizi.glumzi.com</loc>
        </url>
   
        ${canidatePages

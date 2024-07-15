@@ -55,8 +55,8 @@ for (let current of initData) {
 
   let currentAggData = aggregatedData.find((f) => f.TVSERIES_TITLE === TVSERIES_TITLE || areStringsSimilar(normalizeTurkish(f.TVSERIES_TITLE).normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(), normalizeTurkish(TVSERIES_TITLE).normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(), exceptions))
 
-  if (currentAggData && TVSERIES_TITLE.length===currentAggData.TVSERIES_TITLE.length ) {
-
+  if (currentAggData) {
+//&& TVSERIES_TITLE.trim().length===currentAggData.TVSERIES_TITLE.trim().length
 debugger
     for (let propName in fields) {
       const prop = current[propName]

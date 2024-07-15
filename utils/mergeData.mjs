@@ -118,12 +118,17 @@ function levenshteinDistance(a, b) {
   return matrix[b.length][a.length];
 }
 
-function areStringsSimilar(str1, str2, maxDistance = 1, exceptions = []) {
+function areStringsSimilar(str1, str2, maxDistance = 1, maxLengthDifference = 4, exceptions = []) {
   // Check if the pair of strings is in the exceptions list
   if (exceptions.some(pair =>
     (pair[0].toLowerCase() === str1.toLowerCase() && pair[1].toLowerCase() === str2.toLowerCase()) ||
     (pair[1].toLowerCase() === str1.toLowerCase() && pair[0].toLowerCase() === str2.toLowerCase())
   )) {
+    return false;
+  }
+
+  // Check if the length difference is within the allowed range
+  if (Math.abs(str1.length - str2.length) > maxLengthDifference) {
     return false;
   }
 

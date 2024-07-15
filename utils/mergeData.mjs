@@ -6,21 +6,21 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 
-const  atv = require(`${process.cwd()}/unzipped-data/atv.json`)
+const atv = require(`${process.cwd()}/unzipped-data/atv.json`)
 // import kanal7 from '../unzipped-data/kanal7.json'  with { type: "json" }
-const  kanald = require( `${process.cwd()}/unzipped-data/kanald.json`)
-const nowtv =require( `${process.cwd()}/unzipped-data/nowtv.json`)
-const showtv =require (`${process.cwd()}/unzipped-data/showtv.json`)
-const puhutv =require (`${process.cwd()}/unzipped-data/puhutv.json`)
-const beyazperde =require (`${process.cwd()}/unzipped-data/beyazperde.json`)
-const sinemalar =require (`${process.cwd()}/unzipped-data/sinemalar.json`)
-const startv =require (`${process.cwd()}/unzipped-data/startv.json`)
-const medyapim =require (`${process.cwd()}/unzipped-data/medyapim.json`)
-const wikidl =require (`${process.cwd()}/unzipped-data/wikidl.json`)
-const abcProductionWiki =require (`${process.cwd()}/unzipped-data/abcProductionWiki.json`)
-const tableProductionWiki =require (`${process.cwd()}/unzipped-data/tableProductionWiki.json`)
-const ngmedia =require (`${process.cwd()}/unzipped-data/ngmedia.json`)
-const tims =require (`${process.cwd()}/unzipped-data/tims.json`)
+const kanald = require(`${process.cwd()}/unzipped-data/kanald.json`)
+const nowtv = require(`${process.cwd()}/unzipped-data/nowtv.json`)
+const showtv = require(`${process.cwd()}/unzipped-data/showtv.json`)
+const puhutv = require(`${process.cwd()}/unzipped-data/puhutv.json`)
+const beyazperde = require(`${process.cwd()}/unzipped-data/beyazperde.json`)
+const sinemalar = require(`${process.cwd()}/unzipped-data/sinemalar.json`)
+const startv = require(`${process.cwd()}/unzipped-data/startv.json`)
+const medyapim = require(`${process.cwd()}/unzipped-data/medyapim.json`)
+const wikidl = require(`${process.cwd()}/unzipped-data/wikidl.json`)
+const abcProductionWiki = require(`${process.cwd()}/unzipped-data/abcProductionWiki.json`)
+const tableProductionWiki = require(`${process.cwd()}/unzipped-data/tableProductionWiki.json`)
+const ngmedia = require(`${process.cwd()}/unzipped-data/ngmedia.json`)
+const tims = require(`${process.cwd()}/unzipped-data/tims.json`)
 
 // import trt1 from '../unzipped-data/trt1.json'  with { type: "json" }
 
@@ -47,16 +47,17 @@ debugger
 const aggregatedData = []
 
 await makeDir('data/aggregated-data')
-const exceptions =[ ['Ali̇ye', 'Atiye']]
+const exceptions = [['Ali̇ye', 'Atiye']]
 for (let current of initData) {
 
   const TVSERIES_TITLE = current.TVSERIES_TITLE
 
-   let currentAggData = aggregatedData.find((f) =>f.TVSERIES_TITLE===TVSERIES_TITLE || areStringsSimilar(normalizeTurkish(f.TVSERIES_TITLE).normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(),normalizeTurkish(TVSERIES_TITLE).normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(),exceptions) )
-  
-  if (currentAggData) {
 
+  let currentAggData = aggregatedData.find((f) => f.TVSERIES_TITLE === TVSERIES_TITLE || areStringsSimilar(normalizeTurkish(f.TVSERIES_TITLE).normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(), normalizeTurkish(TVSERIES_TITLE).normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(), exceptions))
 
+  if (currentAggData && TVSERIES_TITLE.length===currentAggData.TVSERIES_TITLE.length ) {
+
+debugger
     for (let propName in fields) {
       const prop = current[propName]
       if (prop) {
@@ -119,13 +120,13 @@ function levenshteinDistance(a, b) {
 
 function areStringsSimilar(str1, str2, maxDistance = 1, exceptions = []) {
   // Check if the pair of strings is in the exceptions list
-  if (exceptions.some(pair => 
+  if (exceptions.some(pair =>
     (pair[0].toLowerCase() === str1.toLowerCase() && pair[1].toLowerCase() === str2.toLowerCase()) ||
     (pair[1].toLowerCase() === str1.toLowerCase() && pair[0].toLowerCase() === str2.toLowerCase())
   )) {
     return false;
   }
-  
+
   const distance = levenshteinDistance(str1, str2);
   return distance <= maxDistance;
 }
